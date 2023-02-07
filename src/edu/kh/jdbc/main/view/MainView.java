@@ -37,12 +37,6 @@ public class MainView {
 	
 	
 	
-	
-	
-	
-	
-	
-
 	/** 
 	 *  메인 메뉴 출력 메서드
 	 */
@@ -73,7 +67,6 @@ public class MainView {
 					System.out.println("프로그램 종료"); 
 					break;
 				default : System.out.println("메뉴에 작성된 번호만 입력해주세요");
-				
 				}
 			}else { // 로그인 O
 				System.out.println(" **** 회원 메뉴 **** ");
@@ -88,7 +81,6 @@ public class MainView {
 				System.out.println();
 				
 				switch(input) {
-				
 				case 1 : memberView.memberMenu(LoginMember); break;// 회원 기능 서브 메뉴 출력 
 				case 2 : BoardView.boardView(); break;// 게피산 서브 메뉴 기능
 				case 0 :
@@ -102,15 +94,6 @@ public class MainView {
 				default : System.out.println("메뉴에 작성된 번호만 입력해주세요.");
 				break;
 				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 			}
 				

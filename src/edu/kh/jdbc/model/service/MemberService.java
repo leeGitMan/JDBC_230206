@@ -10,28 +10,17 @@ import edu.kh.jdbc.model.dao.MemberDAO;
 
 public class MemberService {
 	
+	
 	private MemberDAO dao = new MemberDAO();
 	
 	
 	
-	
 
-	public Member selectMyInfo(Member loginMember) {
-		
-		Member member = null;
+	public  Member selectMyInfo(Member loginMember) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		member = dao.selectMyInfo(conn, loginMember);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		Member member = dao.selectMyInfo(conn, loginMember);
 		
 		
 		
@@ -40,9 +29,8 @@ public class MemberService {
 		
 		
 		return member;
-		
-		
-	}
+	}	
+}
 	
 	
 	
@@ -54,4 +42,4 @@ public class MemberService {
 	
 	
 
-}
+
