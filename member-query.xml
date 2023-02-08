@@ -9,4 +9,19 @@
 	FROM MEMBER
 	WHERE MEMBER_NO = ?
 	</entry>
+	
+	
+	<entry key = "selectAll">
+	SELECT MEMBER_NO, MEMBER_ID, MEMBER_NM, MEMBER_GENDER, ENROLL_DATE
+	FROM MEMBER
+	</entry>
+	
+	
+	
+	<entry key = "update">
+	UPDATE MEMBER SET MEMBER_NM = ?, MEMBER_GENDER = ? WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key = "updatePw">UPDATE MEMBER SET MEMBER_PW = ? WHERE MEMBER_PW = ? AND MEMBER_NO = ?</entry>
+	
 </properties>

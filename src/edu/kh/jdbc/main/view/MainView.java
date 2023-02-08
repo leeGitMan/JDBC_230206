@@ -78,7 +78,7 @@ public class MainView {
 				System.out.print("\n메뉴 선택 : ");
 				input = sc.nextInt();
 				
-				System.out.println();
+				System.out.println(LoginMember);
 				
 				switch(input) {
 				case 1 : memberView.memberMenu(LoginMember); break;// 회원 기능 서브 메뉴 출력 
