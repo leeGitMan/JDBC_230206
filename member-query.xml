@@ -24,4 +24,10 @@
 	
 	<entry key = "updatePw">UPDATE MEMBER SET MEMBER_PW = ? WHERE MEMBER_PW = ? AND MEMBER_NO = ?</entry>
 	
+	
+	
+	<entry key = "delete">DELETE FROM MEMBER WHERE MEMBER_NO = ?</entry>
+	
+	
+	
 </properties>

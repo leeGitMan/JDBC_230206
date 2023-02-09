@@ -60,7 +60,7 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
-		conn.setAutoCommit(false);
+		
 		
 		result = dao.updateMember(conn, memberName,memberGender, memberNo);
 		
@@ -87,7 +87,7 @@ public class MemberService {
 		
 		Connection conn = getConnection();
 		
-		conn.setAutoCommit(false);
+		
 		
 		
 		result = dao.updatePw(conn, no, pw0, pw1);
@@ -104,18 +104,23 @@ public class MemberService {
 		
 		return result;
 	}
-	
-	
+
+
+
+
+	public int secession(int num, Member loginMember)throws Exception {
+		
+		int result = 0;
+		Connection conn = getConnection();
+		
+		
+		result = dao.secession(conn, num, loginMember);
+		
+		
+		if(result > 0) 		commit(conn);
+		else				rollback(conn);
+		
+		close(conn);
+		return result;
+	}
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-

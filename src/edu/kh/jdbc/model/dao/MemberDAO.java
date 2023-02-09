@@ -162,4 +162,29 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+
+
+
+
+	public int secession(Connection conn, int num, Member loginMember) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("delete");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+		}
+	
+		return result;
+	}
 }

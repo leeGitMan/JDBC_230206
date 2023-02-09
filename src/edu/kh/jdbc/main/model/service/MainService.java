@@ -73,18 +73,18 @@ public class MainService {
 	public int signUp(Member member) throws Exception {
 		// 1. 커넥션 생성
 		Connection conn = getConnection();
-		
+
 		// 2. DAO 메서드 호출 후 결과 반환 받기
 		int result = dao.signUp(conn, member);
-		
-		
-		// 3. 트랜잭션 제어
+				
+		// 3. 트랜잭션 제어 처리
 		if(result > 0) commit(conn);
-		else 			rollback(conn);
-		
+		else rollback(conn);
+
 		// 4. 커넥션 반환
 		close(conn);
-		
+
+				
 		return result;
 	}
 

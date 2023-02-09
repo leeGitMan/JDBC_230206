@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import edu.kh.jdbc.main.view.MainView;
 import edu.kh.jdbc.member.vo.Member;
 import edu.kh.jdbc.model.service.MemberService;
 
@@ -15,6 +16,12 @@ public class MemberView {
 	private Member loginMember = null;
 	private MemberService memberService = new MemberService();
 	private List<Member>memList = new ArrayList<>();
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -54,6 +61,7 @@ public class MemberView {
 				case 5 : secession(loginMember); break;
 				case 0 : System.out.println("프로그램 종료"); break;
 				default : System.out.println("잘못된 메뉴번호를 입력하셨습니다."); break;
+				
 				}
 					
 			}while(input !=0);
@@ -190,7 +198,7 @@ public class MemberView {
 		
 		int result = 0;
 		boolean flag = true;
-		String pw0 = "";
+		
 		
 		System.out.println();
 		
@@ -212,7 +220,7 @@ public class MemberView {
 				
 //			}while(flag);
 			System.out.print("현재 비밀 번호 입력 : ");
-			pw0 = sc.next();
+			String pw0 = sc.next();
 			
 			
 			System.out.print("수정할 비밀번호 입력 : ");
@@ -236,24 +244,43 @@ public class MemberView {
 	}
 	
 	
-	public void secession() {
+	public void secession(Member loginMember) {
+		int result = 0;
 		
-		System.out.println("[회원 탈퇴 페이지]");
-		
-		System.out.println();
-		System.out.println();
-		
-		System.out.print("정말 회원 탈퇴를 진행하시겠습니까?(Y/N)");
-		char answer = sc.next().toUpperCase().charAt(0);
-		
-		if(answer == 'Y') {
-			System.out.print("비밀번호를 입력해주세요. : ");
-			String pw = sc.next();
+		try {
+			System.out.println("[회원 탈퇴 페이지]");
 			
-		}else {
-			System.out.print("회원 탈퇴 종료");
+			System.out.println();
+			System.out.println();
 			
+			System.out.print("정말 회원 탈퇴를 진행하시겠습니까?(Y/N)");
+			char answer = sc.next().toUpperCase().charAt(0);
 			
+			if(answer == 'Y') {
+				System.out.print("회원 번호를 입력해주세요. : ");
+				int num = sc.nextInt();
+				if(num == loginMember.getMemberNo()) {
+					result = memberService.secession(num,loginMember);
+					
+					if(result > 0) {
+						System.out.println("회원 탈퇴 성공");
+						loginMember = null;
+					}
+				}else {
+					System.out.println("회원 번호를 잘못 입력하셨습니다.");
+				}
+				
+				
+			}else {
+				
+				System.out.println();
+				System.out.print("회원 탈퇴 종료\n");
+				System.out.println();
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 			
 		}
 	}

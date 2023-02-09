@@ -134,9 +134,10 @@ public class MainDAO {
 	 * @return result
 	 */
 	public int signUp(Connection conn, Member member) throws Exception {
-		int result = 0;
+		int result = 0; 
 		
 		try {
+			
 			String sql = prop.getProperty("signUp");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -145,12 +146,13 @@ public class MainDAO {
 			pstmt.setString(2, member.getMemberPw());
 			pstmt.setString(3, member.getMemberName());
 			pstmt.setString(4, member.getMemberGender());
-			
+
 			result = pstmt.executeUpdate();
 			
-		}finally {
+		} finally {
 			close(pstmt);
 		}
+		
 		return result;
 	}
 	
