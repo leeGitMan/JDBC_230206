@@ -26,7 +26,7 @@
 	
 	
 	
-	<entry key = "delete">DELETE FROM MEMBER WHERE MEMBER_NO = ?</entry>
+	<entry key = "delete">UPDATE MEMBER SET SECESSION_FL = 'Y' WHERE MEMBER_NO = ?</entry>
 	
 	
 	

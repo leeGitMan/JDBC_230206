@@ -167,7 +167,7 @@ public class MemberDAO {
 
 
 
-	public int secession(Connection conn, int num, Member loginMember) throws Exception{
+	public int secession(Connection conn, int no, Member loginMember) throws Exception{
 		
 		int result = 0;
 		
@@ -176,7 +176,7 @@ public class MemberDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, no);
 			
 			result = pstmt.executeUpdate();
 			

@@ -26,7 +26,7 @@ public class MemberView {
 	
 	
 
-	public void memberMenu(Member LoginMember) {
+	public Member memberMenu(Member LoginMember) {
 		
 		// 전달 받은 로그인 회원 정보를 필드에 저장
 		this.loginMember = LoginMember;
@@ -49,6 +49,7 @@ public class MemberView {
 				System.out.println("3. 내 정보 수정(이름, 성별)");
 				System.out.println("4. 비밀변호 변경(현재 비번, 새 비번, 새 비번 확인)");
 				System.out.println("5. 회원 탈퇴");
+				System.out.println("0. 프로그램 종료");
 				
 				input = sc.nextInt();
 				sc.nextLine();
@@ -58,8 +59,12 @@ public class MemberView {
 				case 2 : selectAll(); break;
 				case 3 : updateMember(loginMember); break;
 				case 4 : updatePw(loginMember); break;
-				case 5 : secession(loginMember); break;
-				case 0 : System.out.println("프로그램 종료"); break;
+				case 5 : LoginMember = secession(loginMember); 
+						if(LoginMember.getSecessionFlag().equals("Y")) {
+							input = 0;
+						} break;
+				case 0 : LoginMember.setSecessionFlag("N");
+							System.out.println("프로그램 종료"); break;
 				default : System.out.println("잘못된 메뉴번호를 입력하셨습니다."); break;
 				
 				}
@@ -68,6 +73,7 @@ public class MemberView {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return LoginMember;
 	}
 	
 	/** 출력 메서드
@@ -244,7 +250,7 @@ public class MemberView {
 	}
 	
 	
-	public void secession(Member loginMember) {
+	public Member secession(Member loginMember) {
 		int result = 0;
 		
 		try {
@@ -258,13 +264,13 @@ public class MemberView {
 			
 			if(answer == 'Y') {
 				System.out.print("회원 번호를 입력해주세요. : ");
-				int num = sc.nextInt();
-				if(num == loginMember.getMemberNo()) {
-					result = memberService.secession(num,loginMember);
+				int no = sc.nextInt();
+				if(loginMember.getMemberNo() == no) {
+					result = memberService.secession(no,loginMember);
 					
 					if(result > 0) {
 						System.out.println("회원 탈퇴 성공");
-						loginMember = null;
+						loginMember.setSecessionFlag("Y"); // = "Y";
 					}
 				}else {
 					System.out.println("회원 번호를 잘못 입력하셨습니다.");
@@ -283,6 +289,7 @@ public class MemberView {
 			e.printStackTrace();
 			
 		}
+		return loginMember;
 	}
 	
 }

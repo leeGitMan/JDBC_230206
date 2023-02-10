@@ -108,13 +108,13 @@ public class MemberService {
 
 
 
-	public int secession(int num, Member loginMember)throws Exception {
+	public int secession(int no, Member loginMember)throws Exception {
 		
 		int result = 0;
 		Connection conn = getConnection();
 		
 		
-		result = dao.secession(conn, num, loginMember);
+		result = dao.secession(conn, no, loginMember);
 		
 		
 		if(result > 0) 		commit(conn);

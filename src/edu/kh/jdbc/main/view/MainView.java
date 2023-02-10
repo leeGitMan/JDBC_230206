@@ -81,10 +81,16 @@ public class MainView {
 				System.out.println(LoginMember);
 				
 				switch(input) {
-				case 1 : memberView.memberMenu(LoginMember); break;// 회원 기능 서브 메뉴 출력 
+				case 1 : LoginMember = memberView.memberMenu(LoginMember); 
+						if(LoginMember.getSecessionFlag().equals("Y")) {
+							LoginMember = null;
+							
+							System.out.println("로그아웃 되었습니다.");
+						};// 회원 기능 서브 메뉴 출력 
 				case 2 : BoardView.boardView(); break;// 게피산 서브 메뉴 기능
 				case 0 :
-					LoginMember = null;   // 로그아웃 == loginMember가 참조하는 객체 없음( ==null)
+					LoginMember = null;
+					// 로그아웃 == loginMember가 참조하는 객체 없음( ==null)
 					System.out.println("[로그아웃 되었습니다.]");
 					input = -1; // do-while 문이 종료되지 않도록 0이 아닌 값으로 변경해준다.
 					break;
